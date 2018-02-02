@@ -301,7 +301,7 @@ shell(ScreenInfo * screen, int button, int x, int y) {
 		execl(sh, sh, "-c", command, NULL);
 		fprintf(stderr, "%s: can't exec \"%s -c %s\"\n", argv0, sh,
 			command);
-		execlp("xterm", "xterm", NULL);
+		execlp(DEFAULT_TERMINAL, DEFAULT_TERMINAL, NULL);
 		exit(EXIT_FAILURE);
 	case -1:	/* Error. */
 		fprintf(stderr, "%s: couldn't fork\n", argv0);

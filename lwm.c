@@ -234,11 +234,11 @@ sendConfigureNotify(Client *c) {
 extern void
 scanWindowTree(int screen) {
 	unsigned int i;
-	unsigned int nwins;
+	unsigned int nwins = 0;
 	Client * c;
 	Window dw1;
 	Window dw2;
-	Window * wins;
+	Window * wins = NULL;
 	XWindowAttributes attr;
 	
 	XQueryTree(dpy, screens[screen].root, &dw1, &dw2, &wins, &nwins);
@@ -272,7 +272,7 @@ scanWindowTree(int screen) {
 			}
 		}
 	}
-	XFree(wins);
+	if (wins) XFree(wins);
 }
 
 /*ARGSUSED*/

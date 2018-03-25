@@ -235,7 +235,7 @@ Client_Remove(Client *c) {
 			if (!focus) {
 				Window dw1;
 				Window dw2;
-				Window *wins;
+				Window *wins = NULL;
 				unsigned int nwins;
 
 				XQueryTree(dpy, c->screen->root, &dw1,

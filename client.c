@@ -262,8 +262,7 @@ Client_Remove(Client *c) {
 	if (c->name != 0)
 		free(c->name);
 	if (c->menu_name != 0)
-		free(c->name);
-	
+		free(c->menu_name);
 	free(c);
 
 	ewmh_set_client_list(screen);

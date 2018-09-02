@@ -504,11 +504,15 @@ ewmh_get_strut(Client *c) {
 		ewmh_atom[_NET_WM_STRUT],
 		0, 5, False, XA_CARDINAL, &rt, &fmt, &n, &extra,
 		(unsigned char **)&strut);
-	if (i != Success || strut == NULL || n < 4) return;
+	if (i != Success || strut == NULL || n < 4) {
+		if (strut) XFree(strut);
+		return;
+	}
 	c->strut.left = (unsigned int) strut[0];
 	c->strut.right = (unsigned int) strut[1];
 	c->strut.top = (unsigned int) strut[2];
 	c->strut.bottom = (unsigned int) strut[3];
+	XFree(strut);
 	ewmh_set_strut(c->screen);
 }
 
